@@ -1,0 +1,12 @@
+tensorflow
+tensorflow_probability
+matplotlib
+absl-py
+scipy
+seaborn
+sys
+pandas
+os
+scipy
+time
+

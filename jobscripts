@@ -1,0 +1,39 @@
+Example jobscripts for different targets
+
+IId Gaussian target with d=10
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --adaptation='grad' --dims=10 --learning_rate=.001 --cov_type='iid' --num_results=10000  --num_burnin_steps=0  --num_chains=10
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --adaptation='dual' --dims=10 --learning_rate=.001 --cov_type='iid' --num_results=10000  --num_burnin_steps=0  --num_chains=10
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --adaptation='nuts' --dims=10 --learning_rate=.001 --cov_type='iid' --num_results=10000  --num_burnin_steps=0  --num_chains=10
+
+Anisotropic Gaussian distribution case (i) with d=1000
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --dims=1000 --learning_rate=.001 --cov_type=log_space_independent_easier --num_results=10000  --num_burnin_steps=0  --num_chains=10
+
+Anisotropic Gaussian distribution case (i) with d=10000
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --dims=10000 --learning_rate=.001 --cov_type=log_space_independent_easier --num_results=10000  --num_burnin_steps=0  --num_chains=10
+
+Anisotropic Gaussian distribution case (ii)
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --dims=100 --learning_rate=.05 --cov_type=log_space_independent --num_results=100000  --num_chains=10
+
+Correlated Gaussian distribution
+python gaussian_targets.py --id=1 --num_leapfrog_steps=3 --dims=51 --learning_rate=.001 --cov_type=GP --num_results=100000  --num_chains=10
+
+
+Logistic regression models
+python logistic_regression.py --id=1 --num_leapfrog_steps=3 --low_rank=False --data_set='german' --learning_rate=.0001 --num_results=10000 --clip_grad_value=10000 --num_chains=10
+
+
+Log-Gaussian Cox process
+python cox_process.py --id=1 --num_leapfrog_steps=3 --grid_dims=8 --learning_rate=.0001 --num_results=2000 --clip_grad_value=10000  --num_chains=10
+
+
+Stochastic volatility models
+python stochastic_volatility.py --seed=1 --num_leapfrog_steps=3  --pre_cond='tridiag'  --adaptation='grad' --data_set='sp500'  --num_results=10000 --learning_rate=.05  --beta_learning_rate=.5  --num_chains=10  --num_exact_trace_terms=3 --clip_grad_value=50
+
+
+Banana-shaped target with (non-)linear transformations
+python banana_target.py --seed=1 --num_leapfrog_steps=3  --bijector='real_nvp_sigmoid'  --num_results=10000 --learning_rate=.0001  --num_chains=10  --curvature=.1  --dims=2
+python banana_target.py --seed=1 --num_leapfrog_steps=3  --bijector='linear'  --num_results=10000 --learning_rate=.0001  --num_chains=10  --curvature=.1  --dims=2
+
+
+
+
